@@ -1,0 +1,27 @@
+.card {
+    max-width: 800px;
+   }
+   .company-detail-data
+   {
+       text-align: left;
+   }
+   .action-buttons {
+    padding-bottom: 20px;
+  }
+  
+  .headers-align .mat-expansion-panel-header-title,
+  .headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+  
+  .headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  .stocktable {
+    width: 700px;
+  }

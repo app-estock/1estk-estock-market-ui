@@ -1,0 +1,20 @@
+.spacer {
+    flex: 1 1 auto;
+    
+  }
+  .form {
+   
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width: 20px;
+    max-width: 150px;
+    width: 100%;
+    font-size: small;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  .card {
+   max-width: 600px;
+  }

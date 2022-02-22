@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+<span  class="material-icons">trending_up</span>
+<span>&nbsp;Estock&nbsp;</span>
+
+<span class="spacer"></span>
+
+<button mat-button [routerLink]="['estock/addcompany']"><mat-icon>add</mat-icon><span>Add Company</span></button>
+
+
+<button mat-button [routerLink]="['estock/listcompany']"><mat-icon>list</mat-icon><span></span><span>List all companies</span></button>
+
+
+<form class="form">
+    <mat-form-field class="full-width" appearance="standard" >
+      <mat-label>Search Company </mat-label>
+      <input type="text"
+             placeholder="Type or Select code "
+             aria-label="Company Code"
+             matInput
+             [formControl]="searchByCode"
+             [matAutocomplete]="auto" (click)="searchCode()">
+             <mat-icon matSuffix>search</mat-icon>      
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let code of codes" [value]="code">
+          {{code}}
+        </mat-option>
+      </mat-autocomplete>
+    
+    </mat-form-field>
+    
+  </form>
+
+
+ 
+  </mat-toolbar>
+  <br>
+  
+  <div align="center">
+    
+     
+  <router-outlet></router-outlet><br>
+
+
+</div>
+
+  <br>
+  <br>
+
+  
+ 
