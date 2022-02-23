@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompanySearchViewComponent } from './company-search-view.component';
+import { SearchCompanyComponent } from './search-company.component';
 
-describe('CompanySearchViewComponent', () => {
-  let component: CompanySearchViewComponent;
-  let fixture: ComponentFixture<CompanySearchViewComponent>;
+describe('SearchCompanyComponent', () => {
+  let component: SearchCompanyComponent;
+  let fixture: ComponentFixture<SearchCompanyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CompanySearchViewComponent ]
+      declarations: [ SearchCompanyComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompanySearchViewComponent);
+    fixture = TestBed.createComponent(SearchCompanyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

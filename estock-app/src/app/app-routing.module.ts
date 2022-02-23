@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCompanyComponent } from './components/add-company/add-company.component';
 import { CompanyListViewComponent } from './components/company-list-view/company-list-view.component';
-import { CompanySearchViewComponent } from './components/company-search-view/company-search-view.component';
+
+import { SearchCompanyComponent } from './components/search-company/search-company.component';
 
 
 const routes: Routes = [
@@ -20,10 +21,8 @@ const routes: Routes = [
     },
     {
       path:'searchcompany',
-      component: CompanySearchViewComponent,
-      data:{
-        companyCode:'JPPOWER'
-      }
+      component: SearchCompanyComponent,
+     
     },
     {
       path:'listcompany',

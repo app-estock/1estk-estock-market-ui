@@ -19,7 +19,6 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AddCompanyComponent } from './components/add-company/add-company.component';
 import { AddStockComponent } from './components/add-stock/add-stock.component';
 import { CompanyListViewComponent } from './components/company-list-view/company-list-view.component';
-import { CompanySearchViewComponent } from './components/company-search-view/company-search-view.component';
 import { StockListViewComponent } from './components/stock-list-view/stock-list-view.component';
 import { AddCompanyService } from './services/add-company.service';
 import {MatDividerModule} from '@angular/material/divider';
@@ -28,6 +27,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
 import { ListCompanyService } from './services/list-company.service';
+import { SearchCompanyService } from './services/search-company.service';
+import { DataStoreService } from './services/data-store.service';
+import { SearchCompanyComponent } from './components/search-company/search-company.component';
+import { AddStockService } from './services/add-stock.service';
 
 
 
@@ -38,9 +41,9 @@ import { ListCompanyService } from './services/list-company.service';
     AddCompanyComponent,
     AddStockComponent,
     CompanyListViewComponent,
-    CompanySearchViewComponent,
     StockListViewComponent,
     CompanyDetailComponent,
+    SearchCompanyComponent,
    
   
   ],
@@ -72,7 +75,7 @@ import { ListCompanyService } from './services/list-company.service';
     
     
   ],
-  providers: [AddCompanyService,ListCompanyService ],
+  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

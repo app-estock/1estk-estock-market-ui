@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,Output } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { Company } from '../../company';
@@ -29,6 +29,8 @@ export class AddCompanyComponent implements OnInit  {
   
   
   company ={}as Company ;
+  @Output()
+  
   response:any;
 
 
@@ -39,11 +41,12 @@ export class AddCompanyComponent implements OnInit  {
   exchange : string="";
   code : string="";
   constructor(private addCompanyService:AddCompanyService) {
-  
+   
  
    }
 
   ngOnInit(): void {
+    
   }
   saveCompany()
   { console.log("ceo",this.ceo);

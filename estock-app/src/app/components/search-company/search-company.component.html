@@ -1,0 +1,26 @@
+<mat-card class="card">
+<form class="form">
+    <mat-form-field class="full-width" appearance="standard" color="accent" >
+      <mat-label>Search Company </mat-label>
+      <input type="text"
+             placeholder="Type or Select code "
+             aria-label="Company Code"
+             matInput
+             [formControl]="searchByCode"
+             [matAutocomplete]="auto"
+             id="box" #box (keyup.enter)="onEnter(box.value)" >
+             <button mat-icon-button  (click)="searchCompany(searchByCode.value)" matSuffix ><mat-icon>search</mat-icon></button>     
+         <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let code of filteredCodes | async" [value]="code">
+          {{code}}
+        </mat-option>
+      </mat-autocomplete>
+      
+    </mat-form-field>
+   
+    
+  </form>
+  
+</mat-card>
+<br>
+<app-company-detail *ngIf="dataRecieved" [company]="company"> </app-company-detail>

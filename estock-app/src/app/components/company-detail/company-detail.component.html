@@ -9,23 +9,23 @@
 
         <table >
             <tr>
-                <td>Company Ceo :</td>
+                <td>Company Ceo </td>
                 <td>{{company?.ceo}}</td>
             </tr>
             <tr>
-                <td>Yearly Turnover :</td>
+                <td>Yearly Turnover </td>
                 <td><span matPrefix>&#8377;</span>{{company?.turnover}}<span matSuffix>.00cr</span></td>
             </tr>
             <tr>
-                <td>Company Website : &nbsp;</td>
-                <td><span matPrefix>visit:</span>{{company?.website}}</td>
+                <td>Company Website  &nbsp;</td>
+                <td><span matPrefix> </span><a color="green" href={{company?.website}}>{{company?.website}}</a></td>
             </tr>
             <tr>
-                <td>Listed in :</td>
+                <td>Listed in </td>
                 <td>{{company?.exchange}}</td>
             </tr>
             <tr>
-                <td>Current StockPrice : &nbsp;</td>
+                <td>Current StockPrice  &nbsp;</td>
                 <td><span matPrefix>&#8377;</span>{{company?.latestStockPrice}}<span matSuffix>.00</span></td>
             </tr>
         </table>
@@ -47,13 +47,14 @@
           
              
           
-              <mat-form-field appearance="standard" floatLabel="always" color="accent">
+              <mat-form-field appearance="outline" class="full-width" floatLabel="always" color="accent">
                 <mat-label>Price</mat-label>
                 <input matInput type="number" [(ngModel)]="stockPrice" placeholder="0" max=10000 min=10>
+                <button matSuffix mat-icon-button (click)="addStockPrice(company.code)" color="accent"><mat-icon>add</mat-icon></button>
                 <span matPrefix>&#8377;</span>
-                
+               
               </mat-form-field>
-          
+              
             </mat-expansion-panel>
         
           
@@ -68,18 +69,23 @@
                 </mat-panel-description>
               </mat-expansion-panel-header>
           
-              <mat-form-field appearance="outline" floatLabel="always" color="accent">
+              <mat-form-field appearance="standard" floatLabel="always" color="accent">
                 <mat-label>To Date</mat-label>
-                <input matInput [matDatepicker]="topicker" (focus)="topicker.open()"  placeholder="MM/dd/YYY">
+                <input matInput [matDatepicker]="topicker"  (focus)="topicker.open()" [(ngModel)]="toDate"  placeholder="MM/dd/YYY">
                 
               </mat-form-field>
               
-              <mat-form-field appearance="outline" floatLabel="always"  color="accent">
+              <mat-form-field appearance="standard" floatLabel="always"  color="accent">
                 <mat-label>From Date</mat-label>
-                <input matInput [matDatepicker]="frompicker" (focus)="frompicker.open()" placeholder="MM/dd/YYY">
+                <input matInput [matDatepicker]="frompicker" (focus)="frompicker.open()" [(ngModel)]="fromDate" placeholder="MM/dd/YYY">
               </mat-form-field>
-              <mat-datepicker #topicker></mat-datepicker>
               <mat-datepicker #frompicker></mat-datepicker>
+              <mat-datepicker #topicker></mat-datepicker>
+             
+             
+                <button matSuffix mat-icon-button (click)="fetchStockPriceInRange(company.code)" color="accent"><mat-icon>search</mat-icon></button>
+             
+
               <mat-divider inset></mat-divider>
               <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 stocktable">
                 <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">

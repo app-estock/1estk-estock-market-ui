@@ -4,6 +4,7 @@ import { ListCompanyService } from 'src/app/services/list-company.service';
 import {MatAccordion} from '@angular/material/expansion';
 import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 import { Stock } from 'src/app/stock';
+import { AddStockService } from 'src/app/services/add-stock.service';
 
 
 
@@ -28,8 +29,10 @@ export class CompanyDetailComponent implements OnInit {
 company={}as Company;
 stock={} as Stock;
 stockPrice:number=0;
-endDate:Date=new Date();
-startDate:Date=new Date();
+endDate:Date|undefined
+startDate:Date|undefined
+toDate:Date | undefined;
+fromDate:Date | undefined;
 columns = [
  {
     columnDef: 'stockPrice',
@@ -50,7 +53,7 @@ columns = [
 dataSource = ELEMENT_DATA;
 displayedColumns = this.columns.map(c => c.columnDef);
                                 
-  constructor() { }
+  constructor(private addStockService:AddStockService) { }
 
   ngOnInit(): void {
   }
@@ -59,5 +62,20 @@ displayedColumns = this.columns.map(c => c.columnDef);
   {
 
   }
-
+  addStockPrice(code: string)
+  { let response : any;
+    console.log("company code",code);
+    console.log("stockPrice",this.stockPrice);
+    this.stock.stockPrice=this.stockPrice;
+    this.addStockService.addStockPrice(this.stock,code).subscribe(data => {console.log(data);response=data}); 
+    console.log("received response",response);
+  }
+  fetchStockPriceInRange(code:string)
+  { console.log("company code",code);
+    
+    console.log("toDate",this.toDate);
+    console.log("toDate",this.toDate?.toISOString());
+    console.log("fromDate",this.fromDate);
+    console.log("fromDate",this.fromDate?.toISOString());
+  }
 }
