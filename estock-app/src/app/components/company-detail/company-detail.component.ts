@@ -7,6 +7,9 @@ import { Stock } from 'src/app/stock';
 import { AddStockService } from 'src/app/services/add-stock.service';
 import { FetchStocksService } from 'src/app/services/fetch-stocks.service';
 import { StockResponse } from 'src/app/stockresponse';
+import { DeleteCompanyService } from 'src/app/services/delete-company.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataStoreService } from 'src/app/services/data-store.service';
 
 
 
@@ -24,6 +27,8 @@ export class CompanyDetailComponent implements OnInit {
  
 @Input()
 company={}as Company;
+@Input()
+companies=[] as Array<Company>;
 stockResponse={}as StockResponse;
 stockPriceList=[] as Array<Stock>;
 stock={} as Stock;
@@ -57,28 +62,52 @@ columns = [
 dataSource = this.ELEMENT_DATA;
 displayedColumns = this.columns.map(c => c.columnDef);
                                 
-  constructor(private addStockService:AddStockService,private fetchStockService:FetchStocksService) { }
+  constructor(private addStockService:AddStockService,private fetchStockService:FetchStocksService,private deleteService:DeleteCompanyService,private dataStoreService:DataStoreService,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
-  deleteCompany()
-  {
+  deleteCompany(company:Company)
+  {     let message=""+ company.name + " removed!";
+        let code=company.code;
+        console.log("company code",code);
+        console.log("companies",this.companies);
+        for(var i=0;i<this.companies.length;i++)
+        {
+          if(this.companies[i].code===code)
+          {
+            
+           this.companies.splice(i,1);
+               
+          }
+        }
+        
+        
+        this.deleteService.deleteCompany(company.code).subscribe((company)=>{this.snackBar.open(message,'success',{duration:5000});
 
+          let temp=this.dataStoreService.getCodeList();
+          let index=temp.indexOf(code);
+          temp.splice(index,1);
+          this.dataStoreService.setCodeList(temp);
+
+         });
+    
   }
   addStockPrice(code: string)
   { let response : any;
+    let message = "New stock price listed for "+code;
     console.log("company code",code);
     console.log("stockPrice",this.stockPrice);
     this.stock.stockPrice=this.stockPrice;
-    this.addStockService.addStockPrice(this.stock,code).subscribe(data => {console.log(data);response=data}); 
+    this.addStockService.addStockPrice(this.stock,code).subscribe(data => {console.log(data);response=data;this.snackBar.open(message,'success',{duration:5000})});
+   if(response==undefined) {this.snackBar.open("Oh no something went wrong!",'Failure',{duration:5000})}
     console.log("received response",response);
   }
   fetchStockPriceInRange(code:string)
   { 
    let  enddate=this.toDate?.toISOString().toString() as string;
    let  startdate=this.fromDate?.toISOString().toString() as string;
-   
+   let message="Fetched records!";
     console.log("company code",code);
     console.log("fromDate",this.fromDate);
     console.log("fromDate",this.fromDate?.toISOString());
@@ -98,13 +127,12 @@ displayedColumns = this.columns.map(c => c.columnDef);
       this.average=this.stockResponse.averagePrice.toFixed(2) as unknown as number;
       this.minimum=this.stockResponse.minimumPrice;
       this.maximum=this.stockResponse.maximumPrice;
-  
-  
-  
+      this.snackBar.open(message,'Success',{duration:5000});
+     
   
   
   })
-    
+   
 
 
     

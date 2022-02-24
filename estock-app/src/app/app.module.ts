@@ -18,7 +18,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatButtonModule} from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AddCompanyComponent } from './components/add-company/add-company.component';
-import { AddStockComponent } from './components/add-stock/add-stock.component';
 import { CompanyListViewComponent } from './components/company-list-view/company-list-view.component';
 import { StockListViewComponent } from './components/stock-list-view/stock-list-view.component';
 import { AddCompanyService } from './services/add-company.service';
@@ -33,6 +32,8 @@ import { DataStoreService } from './services/data-store.service';
 import { SearchCompanyComponent } from './components/search-company/search-company.component';
 import { AddStockService } from './services/add-stock.service';
 import { FetchStocksService } from './services/fetch-stocks.service';
+import{MatSnackBarModule} from '@angular/material/snack-bar';
+import { DeleteCompanyService } from './services/delete-company.service';
 
 
 
@@ -41,7 +42,6 @@ import { FetchStocksService } from './services/fetch-stocks.service';
     AppComponent,
     NavbarComponent,
     AddCompanyComponent,
-    AddStockComponent,
     CompanyListViewComponent,
     StockListViewComponent,
     CompanyDetailComponent,
@@ -71,6 +71,8 @@ import { FetchStocksService } from './services/fetch-stocks.service';
     MatExpansionModule,
     MatDatepickerModule,
     MatChipsModule,
+    MatSnackBarModule
+    
     
 
 
@@ -78,7 +80,7 @@ import { FetchStocksService } from './services/fetch-stocks.service';
     
     
   ],
-  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService,FetchStocksService ],
+  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService,FetchStocksService,DeleteCompanyService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

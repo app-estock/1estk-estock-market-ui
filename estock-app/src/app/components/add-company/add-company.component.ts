@@ -1,6 +1,7 @@
 import { Component, Input, OnInit,Output } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Company } from '../../company';
 
 import { AddCompanyService } from '../../services/add-company.service';
@@ -39,16 +40,17 @@ export class AddCompanyComponent implements OnInit  {
   website : string="";
   exchange : string="";
   code : string="";
-  constructor(private addCompanyService:AddCompanyService) {
+  constructor(private addCompanyService:AddCompanyService,private snackBar: MatSnackBar) {
    
  
    }
 
   ngOnInit(): void {
-    
+   
   }
   saveCompany()
-  { console.log("ceo",this.ceo);
+  { let message="Hooray! successfully added "+ this.company.code+".";
+    console.log("ceo",this.ceo);
     this.company.ceo=this.ceo;
     console.log("exchange",this.exchange);
     this.company.exchange=this.exchange;
@@ -62,7 +64,10 @@ export class AddCompanyComponent implements OnInit  {
     this.company.name=this.name;
     console.log("Inside Save Company");
     console.log(this.company);
-    this.addCompanyService.addCompany(this.company).subscribe(data => {console.log(data),this.response=data}); 
+    this.addCompanyService.addCompany(this.company).subscribe(data => {console.log(data),this.response=data; this.snackBar.open(message,'success',{duration:5000});}); 
+    if(this.response==undefined){
+      this.snackBar.open("Oops something went wrong!",'failure',{duration:5000});
+    }
     console.log("received response",this.response);    
      
   }
