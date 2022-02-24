@@ -68,17 +68,18 @@
                   <mat-icon>date_range</mat-icon>
                 </mat-panel-description>
               </mat-expansion-panel-header>
-          
+              
+              <mat-form-field appearance="standard" floatLabel="always"  color="accent">
+                <mat-label>From Date</mat-label>
+                <input matInput [matDatepicker]="frompicker" (focus)="frompicker.open()" [(ngModel)]="fromDate" placeholder="MM/dd/YYY">
+              </mat-form-field>
               <mat-form-field appearance="standard" floatLabel="always" color="accent">
                 <mat-label>To Date</mat-label>
                 <input matInput [matDatepicker]="topicker"  (focus)="topicker.open()" [(ngModel)]="toDate"  placeholder="MM/dd/YYY">
                 
               </mat-form-field>
               
-              <mat-form-field appearance="standard" floatLabel="always"  color="accent">
-                <mat-label>From Date</mat-label>
-                <input matInput [matDatepicker]="frompicker" (focus)="frompicker.open()" [(ngModel)]="fromDate" placeholder="MM/dd/YYY">
-              </mat-form-field>
+            
               <mat-datepicker #frompicker></mat-datepicker>
               <mat-datepicker #topicker></mat-datepicker>
              
@@ -100,8 +101,13 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
-              
-
+              <mat-divider inset></mat-divider>
+              <br>
+              <mat-chip-list aria-label="stock stats">
+                <mat-chip color="accent" selected>Minimum Price :<span matPrefix>&#8377;</span>{{minimum}}</mat-chip>
+                <mat-chip color="accent" selected>Maximum Price :<span matPrefix>&#8377;</span>{{maximum}}</mat-chip>
+                <mat-chip color="accent" selected>Average Price :<span matPrefix>&#8377;</span>{{average}}</mat-chip>
+              </mat-chip-list>
             </mat-expansion-panel>
           </mat-accordion>
           <mat-divider inset></mat-divider>

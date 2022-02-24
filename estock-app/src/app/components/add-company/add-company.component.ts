@@ -29,8 +29,7 @@ export class AddCompanyComponent implements OnInit  {
   
   
   company ={}as Company ;
-  @Output()
-  
+ 
   response:any;
 
 

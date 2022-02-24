@@ -5,16 +5,13 @@ import {MatAccordion} from '@angular/material/expansion';
 import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 import { Stock } from 'src/app/stock';
 import { AddStockService } from 'src/app/services/add-stock.service';
+import { FetchStocksService } from 'src/app/services/fetch-stocks.service';
+import { StockResponse } from 'src/app/stockresponse';
 
 
 
-const ELEMENT_DATA : Stock[] = [
-                                {companycode:"JPPOWER",stockDate: "2022-02-18T18:30:00.000+00:00",stockPrice:1200,stockTime:"11:07:18"},
-                                {companycode:"JPPOWER",stockDate: "2022-02-18T18:30:00.000+00:00",stockPrice:1201,stockTime:"11:07:18"},
-                                {companycode:"JPPOWER",stockDate: "2022-02-18T18:30:00.000+00:00",stockPrice:1202,stockTime:"11:07:18"},
-                                {companycode:"JPPOWER",stockDate: "2022-02-18T18:30:00.000+00:00",stockPrice:1204,stockTime:"11:07:18"},
-                              
-                                   ];
+
+
 
                                  
 
@@ -27,22 +24,29 @@ export class CompanyDetailComponent implements OnInit {
  
 @Input()
 company={}as Company;
+stockResponse={}as StockResponse;
+stockPriceList=[] as Array<Stock>;
 stock={} as Stock;
 stockPrice:number=0;
-endDate:Date|undefined
-startDate:Date|undefined
+average=0.0 as number;
+minimum=0.0 as number;
+maximum=0.0 as number;
 toDate:Date | undefined;
 fromDate:Date | undefined;
+ ELEMENT_DATA : Stock[] = [];
+  days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
 columns = [
  {
     columnDef: 'stockPrice',
-    header: 'Price',
-    cell: (element: Stock) => `${element.stockPrice}`,
+    header: 'Price ₹',
+    cell: (element: Stock) => `₹${element.stockPrice}`,
   },
   {
     columnDef: 'stockDate',
     header: 'Date',
-    cell: (element: Stock) => `${element.stockDate}`,
+    cell: (element: Stock) => `${ new Date(element.stockDate).getDate()} ${ this.months[new Date(element.stockDate).getMonth()]} ${ new Date(element.stockDate).getFullYear()}, ${ this.days[new Date(element.stockDate).getDay()]}  `,
   },
   {
     columnDef: 'stockTime',
@@ -50,10 +54,10 @@ columns = [
     cell: (element: Stock) => `${element.stockTime}`,
   },
 ];
-dataSource = ELEMENT_DATA;
+dataSource = this.ELEMENT_DATA;
 displayedColumns = this.columns.map(c => c.columnDef);
                                 
-  constructor(private addStockService:AddStockService) { }
+  constructor(private addStockService:AddStockService,private fetchStockService:FetchStocksService) { }
 
   ngOnInit(): void {
   }
@@ -71,11 +75,38 @@ displayedColumns = this.columns.map(c => c.columnDef);
     console.log("received response",response);
   }
   fetchStockPriceInRange(code:string)
-  { console.log("company code",code);
+  { 
+   let  enddate=this.toDate?.toISOString().toString() as string;
+   let  startdate=this.fromDate?.toISOString().toString() as string;
+   
+    console.log("company code",code);
+    console.log("fromDate",this.fromDate);
+    console.log("fromDate",this.fromDate?.toISOString());
+   
+    console.log("startDate",startdate);
     
     console.log("toDate",this.toDate);
     console.log("toDate",this.toDate?.toISOString());
-    console.log("fromDate",this.fromDate);
-    console.log("fromDate",this.fromDate?.toISOString());
+    
+    console.log("endDate",enddate);
+    this.fetchStockService.fetchStockPrices(code,startdate,enddate).subscribe(stockResponse=>{this.stockResponse=stockResponse;
+      console.log("stockResponse",this.stockResponse);
+      this.ELEMENT_DATA=stockResponse.stockPriceDetailList;
+      this.dataSource = this.ELEMENT_DATA;
+      this.displayedColumns = this.columns.map(c => c.columnDef);
+     
+      this.average=this.stockResponse.averagePrice.toFixed(2) as unknown as number;
+      this.minimum=this.stockResponse.minimumPrice;
+      this.maximum=this.stockResponse.maximumPrice;
+  
+  
+  
+  
+  
+  })
+    
+
+
+    
   }
 }

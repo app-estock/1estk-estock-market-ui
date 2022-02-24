@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {MatChipsModule} from '@angular/material/chips';
 import{MatSelectModule} from '@angular/material/select';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
@@ -31,6 +32,7 @@ import { SearchCompanyService } from './services/search-company.service';
 import { DataStoreService } from './services/data-store.service';
 import { SearchCompanyComponent } from './components/search-company/search-company.component';
 import { AddStockService } from './services/add-stock.service';
+import { FetchStocksService } from './services/fetch-stocks.service';
 
 
 
@@ -67,7 +69,8 @@ import { AddStockService } from './services/add-stock.service';
     MatDividerModule,
     MatProgressBarModule,
     MatExpansionModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatChipsModule,
     
 
 
@@ -75,7 +78,7 @@ import { AddStockService } from './services/add-stock.service';
     
     
   ],
-  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService ],
+  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService,FetchStocksService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
