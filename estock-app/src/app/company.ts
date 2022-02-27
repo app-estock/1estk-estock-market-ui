@@ -6,6 +6,6 @@ export interface Company{
     website: string,
     exchange: string,
     turnover: number,
-    latestStockPrice: number
+    stockPrice: number
 
 }

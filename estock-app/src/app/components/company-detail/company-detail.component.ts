@@ -100,8 +100,8 @@ displayedColumns = this.columns.map(c => c.columnDef);
     console.log("stockPrice",this.stockPrice);
     this.stock.stockPrice=this.stockPrice;
     this.addStockService.addStockPrice(this.stock,code).subscribe(data => {console.log(data);response=data;this.snackBar.open(message,'success',{duration:5000})});
-   if(response==undefined) {this.snackBar.open("Oh no something went wrong!",'Failure',{duration:5000})}
-    console.log("received response",response);
+   
+    
   }
   fetchStockPriceInRange(code:string)
   { 
