@@ -1,0 +1,128 @@
+<mat-card class="card">
+    <mat-card-title-group>
+      <mat-card-title>{{company?.name}}</mat-card-title>
+      <mat-card-subtitle>Code: {{company?.code}} </mat-card-subtitle>
+      <span><mat-icon mat-card-sm-image>business</mat-icon></span>
+    </mat-card-title-group>
+    <mat-card-content class="company-detail-data">
+        <mat-divider inset></mat-divider>
+
+        <table >
+            <tr>
+                <td>Company Ceo </td>
+                <td>{{company?.ceo}}</td>
+            </tr>
+            <tr>
+                <td>Yearly Turnover </td>
+                <td><span matPrefix>&#8377;</span>{{company?.turnover}}<span matSuffix>.00cr</span></td>
+            </tr>
+            <tr>
+                <td>Company Website  &nbsp;</td>
+                <td><span matPrefix> </span><a color="green" href={{company?.website}}>{{company?.website}}</a></td>
+            </tr>
+            <tr>
+                <td>Listed in </td>
+                <td>{{company?.exchange}}</td>
+            </tr>
+            <tr>
+                <td>Current StockPrice  &nbsp;</td>
+                <td><span matPrefix>&#8377;</span>{{company?.stockPrice}}<span matSuffix>.00</span></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <mat-divider inset></mat-divider>
+
+        <mat-accordion class="headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Add Stock Price
+                </mat-panel-title>
+                <mat-panel-description>
+                  Add stock price for {{company?.code}}
+                  <mat-icon>trending_up</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+             
+          
+              <mat-form-field appearance="outline" class="full-width" floatLabel="always" color="accent">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" [(ngModel)]="stockPrice" placeholder="0" max=10000 min=10>
+                <button matSuffix mat-icon-button (click)="addStockPrice(company.code)" color="accent"><mat-icon>add</mat-icon></button>
+                <span matPrefix>&#8377;</span>
+               
+              </mat-form-field>
+              
+            </mat-expansion-panel>
+        
+          
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Fetch Stock Details
+                </mat-panel-title>
+                <mat-panel-description>
+                 Fetch stock prices from date range for {{company?.code}}
+                  <mat-icon>date_range</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              
+              <mat-form-field appearance="standard" floatLabel="always"  color="accent">
+                <mat-label>From Date</mat-label>
+                <input matInput [matDatepicker]="frompicker" (focus)="frompicker.open()" [(ngModel)]="fromDate" placeholder="MM/dd/YYY">
+              </mat-form-field>
+              <mat-form-field appearance="standard" floatLabel="always" color="accent">
+                <mat-label>To Date</mat-label>
+                <input matInput [matDatepicker]="topicker"  (focus)="topicker.open()" [(ngModel)]="toDate"  placeholder="MM/dd/YYY">
+                
+              </mat-form-field>
+              
+            
+              <mat-datepicker #frompicker></mat-datepicker>
+              <mat-datepicker #topicker></mat-datepicker>
+             
+             
+                <button matSuffix mat-icon-button (click)="fetchStockPriceInRange(company.code)" color="accent"><mat-icon>search</mat-icon></button>
+             
+
+              <mat-divider inset></mat-divider>
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 stocktable">
+                <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+                  <th mat-header-cell *matHeaderCellDef>
+                    {{column.header}}
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    {{column.cell(row)}}
+                  </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <mat-divider inset></mat-divider>
+              <br>
+              <mat-chip-list aria-label="stock stats">
+                <mat-chip color="accent" selected>Minimum Price :<span matPrefix>&#8377;</span>{{minimum}}</mat-chip>
+                <mat-chip color="accent" selected>Maximum Price :<span matPrefix>&#8377;</span>{{maximum}}</mat-chip>
+                <mat-chip color="accent" selected>Average Price :<span matPrefix>&#8377;</span>{{average}}</mat-chip>
+              </mat-chip-list>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-divider inset></mat-divider>
+
+         
+          <br>
+
+
+
+
+        <mat-divider inset></mat-divider>
+        <br>
+        <button  mat-raised-button color="warn"  (click)="deleteCompany(company)">Delete</button>
+         
+    </mat-card-content>
+  </mat-card>
+  <br>
+ 

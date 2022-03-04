@@ -1,0 +1,83 @@
+<mat-card class="card">
+    <mat-card-title align="left">Add Company</mat-card-title>
+    <mat-card-content><br>
+      <mat-divider inset></mat-divider><br>
+<form class="form">
+<table align="center">
+<tr>
+<td>
+    <mat-form-field  class="full-width"  appearance="outline"  floatLabel="always" color="accent"> 
+    <mat-label>Code</mat-label>
+    <input type="text" matInput  [formControl]="inputCodeFormControl" [errorStateMatcher]="inputMatcher"  [(ngModel)]="code" placeholder="Ex. ABCORP">
+    <mat-error *ngIf="inputCodeFormControl.hasError('required')">
+        Code is <strong>required</strong>
+        </mat-error>    
+</mat-form-field>
+</td>  
+<td>
+    <mat-form-field class="full-width"  appearance="outline" floatLabel="always" color="accent">
+    <mat-label>Name</mat-label>
+    <input matInput [formControl]="inputNameFormControl" [errorStateMatcher]="inputMatcher" [(ngModel)]="name"  placeholder="Ex. ABC Corp ltd.">
+    <mat-error *ngIf="inputNameFormControl.hasError('required')">
+        Company Name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+</td>
+</tr>
+<tr>
+<td>
+<mat-form-field  class="full-width"  appearance="outline" floatLabel="always" color="accent">
+<mat-label>CEO</mat-label>
+<input type="text" matInput [formControl]="inputCEOFormControl" [errorStateMatcher]="inputMatcher"  [(ngModel)]="ceo"  placeholder="Mr./Mrs./Shri./Smt./Dr." >
+<mat-error *ngIf="inputCEOFormControl.hasError('required')">
+    CEO is <strong>required</strong>
+    </mat-error>
+</mat-form-field>
+</td> 
+<td>
+    <mat-form-field class="full-width" appearance="outline" floatLabel="always" color="accent">
+     <mat-label>Website</mat-label>
+    <input type="url" matInput [formControl]="inputWebsiteFormControl" [errorStateMatcher]="inputMatcher"  [(ngModel)]="website" placeholder="Ex. www.abc.xyz">
+    <mat-error *ngIf="inputWebsiteFormControl.hasError('required')">
+    Website is <strong>required</strong>
+    </mat-error>
+    </mat-form-field>
+</td>
+</tr>
+<tr>
+<td>
+<mat-form-field  class="full-width"  appearance="outline"  floatLabel="always" color="accent">
+<mat-label>Exchange</mat-label>
+<input type="text" matInput [formControl]="inputExchangeFormControl" [errorStateMatcher]="inputMatcher"  [(ngModel)]="exchange" placeholder="Ex. BSE/NSE/NYSE">
+<mat-error *ngIf="inputExchangeFormControl.hasError('required')">
+    Exchange is <strong>required</strong>
+  </mat-error>
+</mat-form-field>
+</td>
+<td>
+    <mat-form-field class="full-width"  appearance="standard" floatLabel="always" color="accent">
+    <mat-label>Turnover</mat-label>
+    <input  matInput [formControl]="inputTurnoverFormControl" [errorStateMatcher]="inputMatcher" type="number"  [(ngModel)]="turnover" class="right-align" placeholder="0">
+    <span matPrefix> &#8377;&nbsp;</span>
+    <span matSuffix> .00cr</span>
+    <mat-hint>Enter turnover in cr.</mat-hint>
+    <mat-error *ngIf="inputTurnoverFormControl.hasError('required')">
+        Turnover is <strong>required</strong>
+    </mat-error>
+    </mat-form-field>
+    </td>
+</tr>
+<tr>
+    <td align="right"> <button mat-raised-button color="accent" (click)="saveCompany()">Save</button>
+       
+        </td>
+        <td> <button mat-raised-button color="warn">Clear</button></td>
+        </tr>
+</table>
+</form>
+<br>
+<mat-divider inset></mat-divider><br>
+</mat-card-content>
+<mat-card-footer>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</mat-card-footer> 

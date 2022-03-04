@@ -1,0 +1,31 @@
+ <mat-toolbar color="accent">
+<span  class="material-icons">trending_up</span>
+<span>&nbsp;Estock&nbsp;</span>
+
+<span class="spacer"></span>
+
+<button mat-button [routerLink]="['estock/addcompany']"><mat-icon>add</mat-icon><span>Add Company</span></button>
+
+<span class="spacer"></span>
+<button mat-button [routerLink]="['estock/listcompany']"><mat-icon>list</mat-icon><span></span><span>List all companies</span></button>
+<span class="spacer"></span>
+
+<button mat-button [routerLink]="['estock/searchcompany']"><mat-icon>search</mat-icon><span></span><span>search</span></button>
+<span class="spacer"></span>
+
+ 
+  </mat-toolbar>
+  <br>
+  
+  <div align="center">
+  
+  <router-outlet  ></router-outlet><br>
+  
+
+</div>
+
+  <br>
+  <br>
+
+  
+ 
