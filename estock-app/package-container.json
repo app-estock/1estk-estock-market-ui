@@ -1,0 +1,17 @@
+{
+    "name": "package",
+    "version": "1.0.0",
+    "description": "This is estock ui here, a user can register a company add stock price, view all company details and current stock price",
+    "main": "karma.conf.js",
+    "dependencies": {
+      "express": "^4.17.3"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server.js"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  
