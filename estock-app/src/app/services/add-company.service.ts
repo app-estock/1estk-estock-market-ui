@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient,HttpHeaders} from '@angular/common/http';
+import { Guid } from 'guid-typescript';
 
 
 
@@ -15,12 +16,17 @@ export class AddCompanyService {
 
   addCompany(company:any)
   {
-    let headers      = new Headers({ 'Content-Type': 'application/json' }); 
+    let  headers= new HttpHeaders();
+    headers.set('content-type', 'application/json')
+    headers=headers.append("estk_transactionID",Guid.create().toString())
+    headers=headers.append("estk_sessionID",Guid.create().toString())
+    headers=headers.append("estk_messageID",Guid.create().toString())
+    headers=headers.append("estk_creationtimestamp",new Date().getTime().toString()) 
     console.log("Inside Service");
     console.log(company);
     const url=`${this.saveCompanyV1Endpoint}`;
     console.log(url);
-     return this.http.post(url,company);
+     return this.http.post(url,company,{headers});
 
   }
  

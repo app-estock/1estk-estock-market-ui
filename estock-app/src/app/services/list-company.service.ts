@@ -19,7 +19,6 @@ export class ListCompanyService {
    getCompanies(): Observable<Array<Company>> {
     let  headers= new HttpHeaders();
     headers.set('content-type', 'application/json')
-    headers.set('Access-Control-Allow-Origin', '*');
     headers=headers.append("estk_transactionID",Guid.create().toString())
     headers=headers.append("estk_sessionID",Guid.create().toString())
     headers=headers.append("estk_messageID",Guid.create().toString())

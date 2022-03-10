@@ -49,7 +49,7 @@ export class AddCompanyComponent implements OnInit  {
    
   }
   saveCompany()
-  { let message="Hooray! successfully added "+ this.company.code+".";
+  { let message="Hooray! successfully added "+ this.code+".";
     console.log("ceo",this.ceo);
     this.company.ceo=this.ceo;
     console.log("exchange",this.exchange);
@@ -65,9 +65,7 @@ export class AddCompanyComponent implements OnInit  {
     console.log("Inside Save Company");
     console.log(this.company);
     this.addCompanyService.addCompany(this.company).subscribe(data => {console.log(data),this.response=data; this.snackBar.open(message,'success',{duration:5000});}); 
-    if(this.response==undefined){
-      this.snackBar.open("Oops something went wrong!",'failure',{duration:5000});
-    }
+   
     console.log("received response",this.response);    
      
   }
