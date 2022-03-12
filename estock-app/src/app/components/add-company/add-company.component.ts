@@ -2,8 +2,9 @@ import { Component, Input, OnInit,Output } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataStoreService } from 'src/app/services/data-store.service';
+import { SuccessResponse } from 'src/app/successResponse';
 import { Company } from '../../company';
-
 import { AddCompanyService } from '../../services/add-company.service';
 export class InputErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -32,7 +33,10 @@ export class AddCompanyComponent implements OnInit  {
   company ={}as Company ;
  
   response:any;
-
+  @Input()
+  userLoggedIn:boolean;
+  @Input()
+  userId:string;
 
   ceo : string="";
   name : string="";
@@ -40,16 +44,21 @@ export class AddCompanyComponent implements OnInit  {
   website : string="";
   exchange : string="";
   code : string="";
-  constructor(private addCompanyService:AddCompanyService,private snackBar: MatSnackBar) {
+ 
+  constructor(private addCompanyService:AddCompanyService,private snackBar: MatSnackBar,private dataStoreService:DataStoreService) {
    
  
    }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    console.log("Inside Add Company ongInit")
+    this.userId=this.dataStoreService.getUserId();
+    this.userLoggedIn=true;
    
   }
   saveCompany()
-  { let message="Hooray! successfully added "+ this.code+".";
+  {  console.log("Inside Save Company");
+    let message="Hooray! successfully added "+ this.code+".";
     console.log("ceo",this.ceo);
     this.company.ceo=this.ceo;
     console.log("exchange",this.exchange);
@@ -62,12 +71,25 @@ export class AddCompanyComponent implements OnInit  {
     this.company.code=this.code;
     console.log("name",this.name);
     this.company.name=this.name;
-    console.log("Inside Save Company");
+    console.log("userId",this.userId);
+    this.company.userId=this.userId;
     console.log(this.company);
-    this.addCompanyService.addCompany(this.company).subscribe(data => {console.log(data),this.response=data; this.snackBar.open(message,'success',{duration:5000});}); 
+    this.addCompanyService.addCompany(this.company).subscribe(data => {console.log(data);
+      this.snackBar.open(message,'success',{duration:5000});}); 
    
-    console.log("received response",this.response);    
+    
      
+  }
+
+  reset()
+  {
+    this.ceo='';
+    this.name='';
+    this.turnover=0;
+    this.exchange='';
+    this.code='';
+    this.website='';
+
   }
 }
 

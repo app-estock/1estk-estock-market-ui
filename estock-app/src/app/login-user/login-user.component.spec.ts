@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StockListViewComponent } from './stock-list-view.component';
+import { LoginUserComponent } from './login-user.component';
 
-describe('StockListViewComponent', () => {
-  let component: StockListViewComponent;
-  let fixture: ComponentFixture<StockListViewComponent>;
+describe('LoginUserComponent', () => {
+  let component: LoginUserComponent;
+  let fixture: ComponentFixture<LoginUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StockListViewComponent ]
+      declarations: [ LoginUserComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StockListViewComponent);
+    fixture = TestBed.createComponent(LoginUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

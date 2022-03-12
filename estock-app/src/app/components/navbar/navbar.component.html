@@ -5,21 +5,32 @@
 <span class="spacer"></span>
 
 <button mat-button [routerLink]="['estock/addcompany']"><mat-icon>add</mat-icon><span>Add Company</span></button>
-
 <span class="spacer"></span>
 <button mat-button [routerLink]="['estock/listcompany']"><mat-icon>list</mat-icon><span></span><span>List all companies</span></button>
+<span class="spacer"></span>
+<button mat-button [routerLink]="['estock/listmycompanies']"><mat-icon>list</mat-icon><span></span><span>List my companies</span></button>
 <span class="spacer"></span>
 
 <button mat-button [routerLink]="['estock/searchcompany']"><mat-icon>search</mat-icon><span></span><span>search</span></button>
 <span class="spacer"></span>
 
- 
+
+<button  mat-button (click)="Logout()">Logout </button>
+<span class="spacer"></span>
+<mat-chip-list>
+  <mat-chip>
+    <mat-chip-avatar>
+      <mat-icon>account_circle</mat-icon>
+    </mat-chip-avatar>
+    <span>{{userId}}</span>
+  </mat-chip>
+</mat-chip-list>
   </mat-toolbar>
   <br>
   
   <div align="center">
   
-  <router-outlet  ></router-outlet><br>
+<router-outlet></router-outlet>
   
 
 </div>

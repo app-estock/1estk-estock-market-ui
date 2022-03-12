@@ -35,7 +35,28 @@
         <mat-divider inset></mat-divider>
 
         <mat-accordion class="headers-align" multi>
-           
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Add Stock Price
+                </mat-panel-title>
+                <mat-panel-description>
+                  Add stock price for {{company?.code}}
+                  <mat-icon>trending_up</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+             
+          
+              <mat-form-field appearance="outline" class="full-width" floatLabel="always" color="accent">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" [(ngModel)]="stockPrice" placeholder="0" max=10000 min=10>
+                <button matSuffix mat-icon-button (click)="addStockPrice(company.code)" color="accent"><mat-icon>add</mat-icon></button>
+                <span matPrefix>&#8377;</span>
+               
+              </mat-form-field>
+              
+            </mat-expansion-panel>
         
           
             <mat-expansion-panel>
@@ -100,7 +121,7 @@
 
         <mat-divider inset></mat-divider>
         <br>
-     
+        <button  mat-raised-button color="warn"  (click)="deleteCompany(company)">Delete</button>
          
     </mat-card-content>
   </mat-card>

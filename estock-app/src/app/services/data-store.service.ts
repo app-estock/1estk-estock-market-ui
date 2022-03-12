@@ -7,6 +7,7 @@ import { Company } from '../company';
 export class DataStoreService {
   company={} as Company;
   code=[] as Array<string>;
+  userId:string;
   constructor() {
     
    }
@@ -29,5 +30,16 @@ export class DataStoreService {
    getCodeList()
    {console.log("Inside getCodeList",this.code);
      return this.code;
+   }
+  
+   setUserId(userId:string)
+   { 
+     this.userId=userId;
+     console.log("Inside setUserIdData",this.userId);
+   }
+   getUserId()
+   {console.log("Inside getUserIdData",this.userId );
+     return this.userId;
+     
    }
 }
