@@ -67,42 +67,7 @@ displayedColumns = this.columns.map(c => c.columnDef);
   ngOnInit(): void {
   }
 
-  deleteCompany(company:Company)
-  {     let message=""+ company.name + " removed!";
-        let code=company.code;
-        console.log("company code",code);
-        console.log("companies",this.companies);
-        for(var i=0;i<this.companies.length;i++)
-        {
-          if(this.companies[i].code===code)
-          {
-            
-           this.companies.splice(i,1);
-               
-          }
-        }
-        
-        
-        this.deleteService.deleteCompany(company.code).subscribe((company)=>{this.snackBar.open(message,'success',{duration:5000});
-
-          let temp=this.dataStoreService.getCodeList();
-          let index=temp.indexOf(code);
-          temp.splice(index,1);
-          this.dataStoreService.setCodeList(temp);
-
-         });
-    
-  }
-  addStockPrice(code: string)
-  { let response : any;
-    let message = "New stock price listed for "+code;
-    console.log("company code",code);
-    console.log("stockPrice",this.stockPrice);
-    this.stock.stockPrice=this.stockPrice;
-    this.addStockService.addStockPrice(this.stock,code).subscribe(data => {console.log(data);response=data;this.snackBar.open(message,'success',{duration:5000})});
-   
-    
-  }
+  
   fetchStockPriceInRange(code:string)
   { 
    let  enddate=this.toDate?.toISOString().toString() as string;

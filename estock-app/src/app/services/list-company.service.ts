@@ -10,22 +10,35 @@ import { Guid } from 'guid-typescript';
 export class ListCompanyService {
   
 
-  listCompanV1Endpoint: string;
+  listCompanV1Endpoint1: string;
+  listCompanV1Endpoint2: string;
+
      
   constructor(private http:HttpClient) {
-    this.listCompanV1Endpoint='http://localhost:8081/listCompanyV1/getall';
+    this.listCompanV1Endpoint1='http://localhost:8081/listCompanyV1/getall';
+    this.listCompanV1Endpoint2='http://localhost:8081/listCompanyV1/get/';
    }
 
    getCompanies(): Observable<Array<Company>> {
     let  headers= new HttpHeaders();
     headers.set('content-type', 'application/json')
-    headers.set('Access-Control-Allow-Origin', '*');
     headers=headers.append("estk_transactionID",Guid.create().toString())
     headers=headers.append("estk_sessionID",Guid.create().toString())
     headers=headers.append("estk_messageID",Guid.create().toString())
     headers=headers.append("estk_creationtimestamp",new Date().getTime().toString())
     console.log(headers);
-    return this.http.get<Array<Company>>(this.listCompanV1Endpoint,{headers});
+    return this.http.get<Array<Company>>(this.listCompanV1Endpoint1,{headers});
+}
+getMyCompanies(userId:string): Observable<Array<Company>> {
+  let  headers= new HttpHeaders();
+  headers.set('content-type', 'application/json')
+  headers=headers.append("estk_transactionID",Guid.create().toString())
+  headers=headers.append("estk_sessionID",Guid.create().toString())
+  headers=headers.append("estk_messageID",Guid.create().toString())
+  headers=headers.append("estk_creationtimestamp",new Date().getTime().toString())
+  console.log(headers);
+  const url =`${this.listCompanV1Endpoint2}${userId}`;
+  return this.http.get<Array<Company>>(url,{headers});
 }
 
 }

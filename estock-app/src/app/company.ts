@@ -6,6 +6,7 @@ export interface Company{
     website: string,
     exchange: string,
     turnover: number,
-    stockPrice: number
+    stockPrice: number,
+    userId:string
 
 }

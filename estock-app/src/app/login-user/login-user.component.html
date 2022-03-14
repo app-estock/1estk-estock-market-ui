@@ -1,0 +1,41 @@
+<div class="block" align="center">
+	<mat-card class="card">
+    <mat-card-title align="left">Estock Login</mat-card-title>
+    <mat-card-content><br>
+      <mat-divider inset></mat-divider><br>
+	<form class="login-form" #loginForm="ngForm" (ngSubmit)="loginUser()" [style.fontSize.px]="20">
+	<div class="login-block">
+	 <div class="row">
+	  <h3>Login User</h3>
+	 </div>
+	 <div class="row">
+		<mat-form-field  class="full-width"  appearance="outline"  floatLabel="always" color="accent"> 
+			<mat-label>UserId</mat-label>
+		<input id="userId" matInput [formControl]="inputUserIdFormControl" [errorStateMatcher]="inputMatcher" placeholder="User Id" [(ngModel)]="newUser.userId" name="userId" required minlength="5" maxlength="10"  >
+		<mat-error *ngIf="inputUserIdFormControl.hasError('required')">
+			User ID is <strong>required</strong>
+			</mat-error>  
+	</mat-form-field>
+
+	  <mat-form-field  class="full-width"  appearance="outline"  floatLabel="always" color="accent">
+		<mat-label>Password</mat-label>
+		<input id="password" matInput placeholder="Password" type="password" [(ngModel)]="newUser.password" name="password"  [formControl]="inputPasswordFormControl" [errorStateMatcher]="inputMatcher">
+		<mat-error *ngIf="inputPasswordFormControl.hasError('required')">
+			Password is <strong>required</strong>
+			</mat-error>  
+	</mat-form-field>
+	</div>
+
+	<div class="row">
+	<button class="login-user" mat-raised-button color="accent" type="submit">Login</button>&nbsp;
+	<button class="register-button" mat-raised-button color="warn" [routerLink]="['/estock/register']">Register</button>
+	</div>
+  </div>
+</form>
+<mat-divider inset></mat-divider><br>
+</mat-card-content>
+<mat-card-footer>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</mat-card-footer> 
+</mat-card>
+</div>

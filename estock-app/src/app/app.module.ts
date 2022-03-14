@@ -19,7 +19,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AddCompanyComponent } from './components/add-company/add-company.component';
 import { CompanyListViewComponent } from './components/company-list-view/company-list-view.component';
-import { StockListViewComponent } from './components/stock-list-view/stock-list-view.component';
 import { AddCompanyService } from './services/add-company.service';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -34,8 +33,24 @@ import { AddStockService } from './services/add-stock.service';
 import { FetchStocksService } from './services/fetch-stocks.service';
 import{MatSnackBarModule} from '@angular/material/snack-bar';
 import { DeleteCompanyService } from './services/delete-company.service';
+import { LoginUserComponent } from './login-user/login-user.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { AuthenticatorService } from './services/authenticator.service';
+import{RouterModule,Routes} from '@angular/router';
+import { AuthgaurdService } from './services/authgaurd.service';
+import { PanelComponent } from './panel/panel.component';
+import { CompanyListMyViewComponent } from './components/company-list-my-view/company-list-my-view.component';
+import { CompanyMyDetailsComponent } from './components/company-my-details/company-my-details.component';
 
 
+const appRoutes: Routes =[
+  {
+   
+    path:'',
+  	redirectTo:'estock/login',
+  	pathMatch:'full'
+  }
+]
 
 @NgModule({
   declarations: [
@@ -43,9 +58,14 @@ import { DeleteCompanyService } from './services/delete-company.service';
     NavbarComponent,
     AddCompanyComponent,
     CompanyListViewComponent,
-    StockListViewComponent,
     CompanyDetailComponent,
     SearchCompanyComponent,
+    LoginUserComponent,
+    RegisterUserComponent,
+    PanelComponent,
+    CompanyListMyViewComponent,
+    CompanyMyDetailsComponent
+  
    
   
   ],
@@ -71,7 +91,8 @@ import { DeleteCompanyService } from './services/delete-company.service';
     MatExpansionModule,
     MatDatepickerModule,
     MatChipsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    RouterModule.forRoot(appRoutes)
     
     
 
@@ -80,7 +101,7 @@ import { DeleteCompanyService } from './services/delete-company.service';
     
     
   ],
-  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService,FetchStocksService,DeleteCompanyService ],
+  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService,FetchStocksService,DeleteCompanyService,AuthenticatorService,AuthgaurdService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
