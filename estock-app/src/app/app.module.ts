@@ -41,6 +41,7 @@ import { AuthgaurdService } from './services/authgaurd.service';
 import { PanelComponent } from './panel/panel.component';
 import { CompanyListMyViewComponent } from './components/company-list-my-view/company-list-my-view.component';
 import { CompanyMyDetailsComponent } from './components/company-my-details/company-my-details.component';
+import { TokenInterceptor } from './services/interceptor.service';
 
 
 const appRoutes: Routes =[
@@ -101,7 +102,7 @@ const appRoutes: Routes =[
     
     
   ],
-  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService,FetchStocksService,DeleteCompanyService,AuthenticatorService,AuthgaurdService ],
+  providers: [AddCompanyService,ListCompanyService,SearchCompanyService,DataStoreService,AddStockService,FetchStocksService,DeleteCompanyService,AuthenticatorService,AuthgaurdService,TokenInterceptor ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
