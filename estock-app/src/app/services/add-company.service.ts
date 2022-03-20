@@ -11,7 +11,7 @@ export class AddCompanyService {
   saveCompanyV1Endpoint: string;
   
   constructor(private http:HttpClient) { 
-    this.saveCompanyV1Endpoint='http://localhost:8081/saveCompanyV1/register';
+    this.saveCompanyV1Endpoint='http://localhost:8081/CompanyV1/register';
   }
 
   addCompany(company:any)
@@ -22,10 +22,8 @@ export class AddCompanyService {
     headers=headers.append("estk_sessionID",Guid.create().toString())
     headers=headers.append("estk_messageID",Guid.create().toString())
     headers=headers.append("estk_creationtimestamp",new Date().getTime().toString()) 
-   
     headers=headers.append( "auth_token","Bearer "+`${localStorage.getItem(TOKEN_NAME)}`);
-   
-    headers=headers.append( "authorization","Bearer "+`${localStorage.getItem(TOKEN_NAME)}`);
+    headers=headers.append( "Authorization","Bearer "+`${localStorage.getItem(TOKEN_NAME)}`);
     console.log(headers)
     console.log("Inside Service");
     console.log(company);

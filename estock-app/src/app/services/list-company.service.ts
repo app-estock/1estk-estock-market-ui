@@ -15,8 +15,8 @@ export class ListCompanyService {
 
      
   constructor(private http:HttpClient) {
-    this.listCompanV1Endpoint1='http://localhost:8081/listCompanyV1/getall';
-    this.listCompanV1Endpoint2='http://localhost:8081/listCompanyV1/get/';
+    this.listCompanV1Endpoint1='http://localhost:8081/CompanyV1/getall';
+    this.listCompanV1Endpoint2='http://localhost:8081/CompanyV1/get/';
    }
 
    getCompanies(): Observable<Array<Company>> {
