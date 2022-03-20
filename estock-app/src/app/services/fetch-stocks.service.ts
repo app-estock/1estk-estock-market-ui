@@ -3,6 +3,8 @@ import {HttpClient,HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { StockResponse } from '../stockresponse';
 import { Guid } from 'guid-typescript';
+export const TOKEN_NAME:string = 'jwt_token';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +13,7 @@ export class FetchStocksService {
   fetchStockV1Endpoint: string;
 
   constructor(private http:HttpClient) {
-    this.fetchStockV1Endpoint='http://localhost:8081/fetchStocksV1/get/';
+    this.fetchStockV1Endpoint='http://localhost:8081/StockV1/get/';
    }
   
    fetchStockPrices(companycode:string,startdate:string,enddate:string): Observable<StockResponse> {
@@ -21,6 +23,8 @@ export class FetchStocksService {
     headers=headers.append("estk_sessionID",Guid.create().toString())
     headers=headers.append("estk_messageID",Guid.create().toString())
     headers=headers.append("estk_creationtimestamp",new Date().getTime().toString())
+    headers=headers.append( "auth_token","Bearer "+`${localStorage.getItem(TOKEN_NAME)}`);
+    headers=headers.append( "Authorization","Bearer "+`${localStorage.getItem(TOKEN_NAME)}`);
     let fromDate= new Date(startdate);
     let toDate=new Date(enddate);
     console.log(headers);
