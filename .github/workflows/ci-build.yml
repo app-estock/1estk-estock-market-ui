@@ -32,7 +32,7 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: go to project dir
-      run: cd estk*
+      run: cd est*
 
     - name: Build
       run: ng build
