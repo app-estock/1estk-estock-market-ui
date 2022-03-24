@@ -34,8 +34,6 @@ jobs:
       run: cd est*
     - name: Install dependencies
       run: npm install
-    
-
     - name: Build
       run: ng build
     - name: Archive build
