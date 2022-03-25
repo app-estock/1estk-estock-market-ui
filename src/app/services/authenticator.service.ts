@@ -10,9 +10,10 @@ export class AuthenticatorService {
 
   springEndPoint:string;
   token:string;
-  
+  host:string;
     constructor(private httpClient:HttpClient){
-      this.springEndPoint='http://localhost:8081/authenticateV1';
+      this.host="3.111.246.41";
+      this.springEndPoint='http://'+this.host+':8081/authenticateV1';
       this.token="";
    
     }

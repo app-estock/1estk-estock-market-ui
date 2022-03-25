@@ -9,9 +9,10 @@ export const TOKEN_NAME:string = 'jwt_token';
 export class AddStockService {
 
   addStockV1Endpoint: string;
-
+   host:string;
   constructor(private http:HttpClient) { 
-    this.addStockV1Endpoint='http://localhost:8081/StockV1/add/';
+    this.host="3.111.246.41";
+    this.addStockV1Endpoint='http://'+this.host+':8081/StockV1/add/';
   }
 
   addStockPrice(stockPrice:any,companycode:string)

@@ -9,9 +9,11 @@ export const TOKEN_NAME:string = 'jwt_token';
 @Injectable()
 export class AddCompanyService {
   saveCompanyV1Endpoint: string;
+  host:string;
   
   constructor(private http:HttpClient) { 
-    this.saveCompanyV1Endpoint='http://localhost:8081/CompanyV1/register';
+    this.host="3.111.246.41";
+    this.saveCompanyV1Endpoint='http://'+this.host+':8081/CompanyV1/register';
   }
 
   addCompany(company:any)

@@ -12,11 +12,12 @@ export class ListCompanyService {
 
   listCompanV1Endpoint1: string;
   listCompanV1Endpoint2: string;
-
+  host:string;
      
   constructor(private http:HttpClient) {
-    this.listCompanV1Endpoint1='http://localhost:8081/CompanyV1/getall';
-    this.listCompanV1Endpoint2='http://localhost:8081/CompanyV1/get/';
+    this.listCompanV1Endpoint1='http://3.111.246.41:8081/CompanyV1/getall';
+    this.listCompanV1Endpoint2='http://3.111.246.41:8081/CompanyV1/get/';
+    this.host="3.111.246.41";
    }
 
    getCompanies(): Observable<Array<Company>> {

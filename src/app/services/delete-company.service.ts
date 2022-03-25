@@ -11,10 +11,11 @@ export const TOKEN_NAME:string = 'jwt_token';
 export class DeleteCompanyService {
 
   deleteCompanyEndpoint:string;
- 
+  host:string;
 
   constructor(private http:HttpClient) {
-    this.deleteCompanyEndpoint="http://localhost:8081/CompanyV1/delete/"
+    this.host="3.111.246.41";
+    this.deleteCompanyEndpoint="http://"+this.host +":8081/CompanyV1/delete/";
    }
 
   deleteCompany(code: string)

@@ -1,0 +1,43 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: build
+
+on:
+  push:
+    branches: 
+      - develop
+      - main
+    
+  pull_request:
+    branches: 
+     - develop
+     - main
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Use Node 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - name: go to project dir
+      run: cd est*
+    - name: Install dependencies
+      run: npm install
+    - name: Build
+      run: ng build
+    - name: Archive build
+      if: success()
+      uses: actions/upload-artifact@v1
+      with:
+        name: deploy_dist
+        path: dist 
