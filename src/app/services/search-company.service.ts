@@ -13,7 +13,7 @@ searchCompanyEndpoint:string;
  
 
   constructor(private http:HttpClient) {
-    this.searchCompanyEndpoint="http://localhost:8081/CompanyV1/info/"
+    this.searchCompanyEndpoint="http://3.111.246.41:8081/CompanyV1/info/"
    }
 
   searchCompany(searchKey: string):Observable<Company>
