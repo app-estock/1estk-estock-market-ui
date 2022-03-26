@@ -15,8 +15,8 @@ export class ListCompanyService {
   
      
   constructor(private http:HttpClient) {
-    this.listCompanV1Endpoint1='http://estk-lb-753663732.ap-south-1.elb.amazonaws.com/api/v1.0/market/company/getall';
-    this.listCompanV1Endpoint2='http://estk-lb-753663732.ap-south-1.elb.amazonaws.com/api/v1.0/market/company/get/';
+    this.listCompanV1Endpoint1='http://api-gateway.estk.com/CompanyV1/getall';
+    this.listCompanV1Endpoint2='http://api-gateway.estk.com/CompanyV1/get/';
     
    }
 

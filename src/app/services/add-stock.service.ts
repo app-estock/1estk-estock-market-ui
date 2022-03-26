@@ -11,8 +11,8 @@ export class AddStockService {
   addStockV1Endpoint: string;
    host:string;
   constructor(private http:HttpClient) { 
-    this.host="3.111.246.41";
-    this.addStockV1Endpoint='http://'+this.host+':8081/StockV1/add/';
+
+    this.addStockV1Endpoint='http://api-gateway.estk.com/StockV1/add/';
   }
 
   addStockPrice(stockPrice:any,companycode:string)
