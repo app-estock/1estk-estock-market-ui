@@ -12,12 +12,12 @@ export class ListCompanyService {
 
   listCompanV1Endpoint1: string;
   listCompanV1Endpoint2: string;
-  host:string;
+  
      
   constructor(private http:HttpClient) {
-    this.listCompanV1Endpoint1='http://3.111.246.41:8081/CompanyV1/getall';
-    this.listCompanV1Endpoint2='http://3.111.246.41:8081/CompanyV1/get/';
-    this.host="3.111.246.41";
+    this.listCompanV1Endpoint1='http://estk-lb-753663732.ap-south-1.elb.amazonaws.com/api/v1.0/market/company/getall';
+    this.listCompanV1Endpoint2='http://estk-lb-753663732.ap-south-1.elb.amazonaws.com/api/v1.0/market/company/get/';
+    
    }
 
    getCompanies(): Observable<Array<Company>> {

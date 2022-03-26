@@ -12,8 +12,8 @@ export class AddCompanyService {
   host:string;
   
   constructor(private http:HttpClient) { 
-    this.host="3.111.246.41";
-    this.saveCompanyV1Endpoint='http://'+this.host+':8081/CompanyV1/register';
+   
+    this.saveCompanyV1Endpoint='http://estk-lb-753663732.ap-south-1.elb.amazonaws.com/api/v1.0/market/company/register';
   }
 
   addCompany(company:any)
