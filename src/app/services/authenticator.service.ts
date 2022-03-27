@@ -13,7 +13,7 @@ export class AuthenticatorService {
   host:string;
     constructor(private httpClient:HttpClient){
      
-      this.springEndPoint="http://api-gateway.estk.com/authenticateV1";
+      this.springEndPoint="http://13.233.137.209/authenticateV1";
       this.token="";
    
     }

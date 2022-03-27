@@ -12,7 +12,7 @@ export class AddStockService {
    host:string;
   constructor(private http:HttpClient) { 
 
-    this.addStockV1Endpoint='http://api-gateway.estk.com/StockV1/add/';
+    this.addStockV1Endpoint='http://13.233.137.209/StockV1/add/';
   }
 
   addStockPrice(stockPrice:any,companycode:string)

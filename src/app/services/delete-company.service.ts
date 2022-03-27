@@ -14,7 +14,7 @@ export class DeleteCompanyService {
   host:string;
 
   constructor(private http:HttpClient) {
-    this.host="3.111.246.41";  this.deleteCompanyEndpoint="http://api-gateway.estk.com/CompanyV1/delete/";
+    this.host="3.111.246.41";  this.deleteCompanyEndpoint="http://13.233.137.209/CompanyV1/delete/";
    }
 
   deleteCompany(code: string)
