@@ -13,7 +13,7 @@ export class AuthenticatorService {
   host:string;
     constructor(private httpClient:HttpClient){
      
-      this.springEndPoint="http://3.111.53.54/authenticateV1";
+      this.springEndPoint="http://13.232.178.58:8081/authenticateV1";
       this.token="";
    
     }

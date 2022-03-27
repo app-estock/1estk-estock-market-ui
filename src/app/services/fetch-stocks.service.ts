@@ -13,7 +13,7 @@ export class FetchStocksService {
   fetchStockV1Endpoint: string;
 
   constructor(private http:HttpClient) {
-    this.fetchStockV1Endpoint='http://3.111.53.54/StockV1/get/';
+    this.fetchStockV1Endpoint='http://13.232.178.58:8081/StockV1/get/';
    }
   
    fetchStockPrices(companycode:string,startdate:string,enddate:string): Observable<StockResponse> {

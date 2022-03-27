@@ -12,7 +12,7 @@ export class AddStockService {
    host:string;
   constructor(private http:HttpClient) { 
 
-    this.addStockV1Endpoint='http://3.111.53.54/StockV1/add/';
+    this.addStockV1Endpoint='http://13.232.178.58:8081/StockV1/add/';
   }
 
   addStockPrice(stockPrice:any,companycode:string)
