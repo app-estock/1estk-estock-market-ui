@@ -13,7 +13,7 @@ export class AddCompanyService {
   
   constructor(private http:HttpClient) { 
    
-    this.saveCompanyV1Endpoint='http://13.233.137.209/CompanyV1/register';
+    this.saveCompanyV1Endpoint='http://3.111.53.54/CompanyV1/register';
   }
 
   addCompany(company:any)

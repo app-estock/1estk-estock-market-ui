@@ -15,8 +15,8 @@ export class ListCompanyService {
   
      
   constructor(private http:HttpClient) {
-    this.listCompanV1Endpoint1='http://13.233.137.209/CompanyV1/getall';
-    this.listCompanV1Endpoint2='http://13.233.137.209/CompanyV1/get/';
+    this.listCompanV1Endpoint1='http://3.111.53.54/CompanyV1/getall';
+    this.listCompanV1Endpoint2='http://3.111.53.54/CompanyV1/get/';
     
    }
 
