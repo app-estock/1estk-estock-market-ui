@@ -13,7 +13,8 @@ searchCompanyEndpoint:string;
  
 
   constructor(private http:HttpClient) {
-    this.searchCompanyEndpoint="http://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/company/info/"
+    this.searchCompanyEndpoint="https://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/company/info/"
+    //this.searchCompanyEndpoint="http://localhost:8081/CompanyV1/info/"
    }
 
   searchCompany(searchKey: string):Observable<Company>

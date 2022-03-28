@@ -13,7 +13,8 @@ export class FetchStocksService {
   fetchStockV1Endpoint: string;
 
   constructor(private http:HttpClient) {
-    this.fetchStockV1Endpoint='http://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/stock/get/';
+    this.fetchStockV1Endpoint='https://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/stock/get/';
+   // this.fetchStockV1Endpoint='http://localhost:8081/StockV1/get/';
    }
   
    fetchStockPrices(companycode:string,startdate:string,enddate:string): Observable<StockResponse> {

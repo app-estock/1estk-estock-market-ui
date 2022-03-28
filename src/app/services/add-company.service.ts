@@ -13,8 +13,10 @@ export class AddCompanyService {
   
   constructor(private http:HttpClient) { 
    
-    this.saveCompanyV1Endpoint='http://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/company/register';
-  }
+   this.saveCompanyV1Endpoint='https://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/company/register';
+    //this.saveCompanyV1Endpoint='http://localhost:8081/CompanyV1/register'
+  };
+    
 
   addCompany(company:any)
   { 

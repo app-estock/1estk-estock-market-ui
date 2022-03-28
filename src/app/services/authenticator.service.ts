@@ -13,7 +13,9 @@ export class AuthenticatorService {
   host:string;
     constructor(private httpClient:HttpClient){
      
-      this.springEndPoint="http://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/user";
+      this.springEndPoint="https://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/user";
+      //this.springEndPoint="http://localhost:8081/authenticateV1/";
+
       this.token="";
    
     }

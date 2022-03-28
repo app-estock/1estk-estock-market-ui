@@ -12,7 +12,7 @@ export class AddStockService {
    host:string;
   constructor(private http:HttpClient) { 
 
-    this.addStockV1Endpoint='http://13.232.178.58:8081/StockV1/add/';
+    this.addStockV1Endpoint='https://r5uug5kyk5.execute-api.ap-south-1.amazonaws.com/estk-deploy/api/v1.0/market/stock/add/';
   }
 
   addStockPrice(stockPrice:any,companycode:string)
